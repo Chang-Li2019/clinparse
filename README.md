@@ -1,5 +1,5 @@
 # clinparse
-clinparse
+A pipeline to parse ClinVar and perform descriptive analyses on generated PDB files. Specifically, first ClinVar missense pathogenic/benign variants were identified. Second, users can run AlphaFold to generate PDB files for mutant and wild-type protein sequence (gene) of interest. Third, RMSD will be calculated and plDDT scores/contact maps will be visualized for each mutant sequence.
 
 1. Create a conda environment
 
@@ -30,7 +30,7 @@ python clinparse.py APOE -f data/Clinvar_20220517.vcf.gz
 5. (Optional) To run AlphaFold locally, follow the prompt to install localcolabfold: https://github.com/YoshitakaMo/localcolabfold;
 To run AlphaFold using Google Colab, please refer to ColabFold https://github.com/sokrypton/ColabFold, or https://github.com/deepmind/alphafold
 
-  After installation, to run the prediction using cpu:
+  *After installation, to run the prediction using cpu:
   
   ```
   colabfold_batch --amber --templates --num-recycle 3 --use-gpu-relax inputfile outputdir/ --cpu
