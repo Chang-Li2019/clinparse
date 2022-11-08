@@ -1,25 +1,20 @@
 # clinparse
 A pipeline to parse ClinVar and perform descriptive analyses on generated PDB files. Specifically, first ClinVar missense pathogenic/benign variants were identified. Second, users can run AlphaFold to generate PDB files for mutant and wild-type protein sequence (gene) of interest. Third, RMSD will be calculated and plDDT scores/contact maps will be visualized for each mutant sequence.
 
-1. Create a conda environment
+1. Download package
 
-```
-conda create -n clinparse python==3.9
-```
-
-2. Activate envrionment and install pip
-
-```
-conda activate clinparse
-conda install pip
-pip install setuptools==57
-```
-
-3. move to the folder with the setup.py file and install setup
+2. Install requirement packages in a virtual environment
 
 ```
 cd clinparse
-pip3 install .
+conda env create -f environment.yml
+```
+
+3. Activate environment and move to clinparse folder
+
+```
+conda activate clinparse
+cd clinparse
 ```
 
 4. Preprocess ClinVar and prepare mutant protein sequences for gene name of interest:
@@ -40,6 +35,6 @@ To run AlphaFold using Google Colab, please refer to ColabFold https://github.co
 6. Calculate RMSD and visualization using sample files:
 
 ```
-clinparse % python visualize.py -f ./data/test/APOE_ref_relaxed_rank_1_model_3.pdb -tp ./data/test/TP -tn ./data/test/TN
+python visualize.py -f ./data/test/APOE_ref_relaxed_rank_1_model_3.pdb -tp ./data/test/TP -tn ./data/test/TN
 ```
 
