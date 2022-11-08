@@ -3,7 +3,7 @@ clinparse
 
 Download install_colabbatch_linux.sh from this repository:
 
-'''
+'''bash:
 $ wget https://raw.githubusercontent.com/YoshitakaMo/localcolabfold/main/install_colabbatch_linux.sh
 '''
 
