@@ -1,14 +1,44 @@
 # clinparse
 clinparse
 
-Download install_colabbatch_linux.sh from this repository:
+1. Create a conda environment
 
-```bash:
-$ wget https://raw.githubusercontent.com/YoshitakaMo/localcolabfold/main/install_colabbatch_linux.sh
+```
+conda create -n clinparse python==3.9
 ```
 
-and run it in the directory where you want to install:
+2. Activate envrionment and install pip
 
-```bash:
-$ bash install_colabbatch_linux.sh
 ```
+conda activate clinparse
+conda install pip
+```
+
+3. move to the folder with the setup.py file and install setup
+
+```
+cd clinparse
+pip3 install .
+```
+
+4. Preprocess ClinVar and prepare mutant protein sequences for gene name of interest:
+
+```
+python clinparse.py APOE -f data/Clinvar_20220517.vcf.gz 
+```
+
+5. (Optional) To run AlphaFold locally, follow the prompt to install localcolabfold: https://github.com/YoshitakaMo/localcolabfold;
+To run AlphaFold using Google Colab, please refer to ColabFold https://github.com/sokrypton/ColabFold, or https://github.com/deepmind/alphafold
+
+  After installation, to run the prediction using cpu:
+  
+  ```
+  colabfold_batch --amber --templates --num-recycle 3 --use-gpu-relax inputfile outputdir/ --cpu
+  ```
+  
+6. Calculate RMSD and visualization using sample files:
+
+```
+clinparse % python visualize.py -f ./data/test/APOE_ref_relaxed_rank_1_model_3.pdb -tp ./data/test/TP -tn ./data/test/TN
+```
+
