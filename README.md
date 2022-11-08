@@ -17,13 +17,19 @@ conda activate clinparse
 cd clinparse
 ```
 
-4. Preprocess ClinVar and prepare mutant protein sequences for gene name of interest:
+4. Install reference databases for annotation:
+
+```
+pyensembl install --release 106 --species human
+```
+
+5. Preprocess ClinVar and prepare mutant protein sequences for gene name of interest:
 
 ```
 python clinparse.py APOE -f data/Clinvar_20220517.vcf.gz 
 ```
 
-5. (Optional) To run AlphaFold locally, follow the prompt to install localcolabfold: https://github.com/YoshitakaMo/localcolabfold;
+6. (Optional) To run AlphaFold locally, follow the prompt to install localcolabfold: https://github.com/YoshitakaMo/localcolabfold;
 To run AlphaFold using Google Colab, please refer to ColabFold https://github.com/sokrypton/ColabFold, or https://github.com/deepmind/alphafold
 
   *After installation, to run the prediction using cpu:
@@ -32,7 +38,7 @@ To run AlphaFold using Google Colab, please refer to ColabFold https://github.co
   colabfold_batch --amber --templates --num-recycle 3 --use-gpu-relax inputfile outputdir/ --cpu
   ```
   
-6. Calculate RMSD and visualization using sample files:
+7. Calculate RMSD and visualization using sample files:
 
 ```
 python visualize.py -f ./data/test/APOE_ref_relaxed_rank_1_model_3.pdb -tp ./data/test/TP -tn ./data/test/TN
