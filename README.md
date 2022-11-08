@@ -12,6 +12,7 @@ conda create -n clinparse python==3.9
 ```
 conda activate clinparse
 conda install pip
+pip install setuptools==57
 ```
 
 3. move to the folder with the setup.py file and install setup
